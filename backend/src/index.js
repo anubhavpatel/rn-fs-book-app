@@ -25,5 +25,3 @@ app.listen(PORT,()=>{
     connectDB();
     
 });
-
-// token based auth - the server create a secure token that contains encrypted inf about who you are. your app stores this token and sends it with future requests to prove your identity.
