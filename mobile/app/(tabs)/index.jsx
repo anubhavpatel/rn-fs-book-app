@@ -29,8 +29,7 @@ export default function Home() {
         setRefreshing(true);
       }
       else if (pageNum === 1) setLoading(true);
-      //console.log("🛡️ Token:", token);
-      
+    
 
       const response = await fetch(`${API_URL}/api/book?page=${pageNum}&limit=3`, {
 
