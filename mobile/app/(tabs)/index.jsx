@@ -96,6 +96,7 @@ console.log(token)
     if(loading) return <Loader />
 
   const renderItem = async ({ item }) => {
+    console.log("dssf",item)
     return (
       <View style={styles.bookCard}>
 
@@ -119,7 +120,7 @@ console.log(token)
       </View>);
   }
  
-    
+    console.log("books",books)
   return (
     <View style={styles.container}>
       <FlatList

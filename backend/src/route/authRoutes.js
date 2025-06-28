@@ -11,9 +11,9 @@ const generateToken = (userId) =>{
 router.post("/register", async (req,res)=>{
     //res.send("register");
     try {
-        const {email,username,mobile,password} = req.body;
+        const {email,username,password} = req.body;
   
-        if(!username || !email || !password || !mobile){
+        if(!username || !email || !password ){
             return res.status(400).json ({ message: "All fields are required"} );
         }
         if(password.length < 6){
@@ -22,9 +22,7 @@ router.post("/register", async (req,res)=>{
           if(username.length < 3){
                 return res.status(400).json ({ message: "Username should be at least 3 character long"} );
         }
-        if(mobile.length < 10){
-                return res.status(400).json ({ message: "Invalid mobile number"} );
-        }
+       
         // check if user already exists
         const existingEmail= await User.findOne({email});
         if(existingEmail){
@@ -49,7 +47,7 @@ router.post("/register", async (req,res)=>{
             email,
             username,
             password,
-            mobile,
+           
             profileImage
         })
         await user.save();
@@ -60,7 +58,7 @@ router.post("/register", async (req,res)=>{
                 id: user._id,
                 username: user.username,
                 email: user.email,
-                mobile: user.mobile,
+               
                 profileImage: user.profileImage,
                createdAt: user.createdAt
 

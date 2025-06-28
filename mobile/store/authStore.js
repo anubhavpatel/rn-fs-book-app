@@ -8,7 +8,7 @@ export const useAuthStore = create((set) => ({
     isLoading: false,
     isCheckingAuth: true,
 
-    register: async (username, email,mobile, password) => {
+    register: async (username, email, password) => {
 
         set({ isLoading: true });
         try {
@@ -21,7 +21,6 @@ export const useAuthStore = create((set) => ({
                 body: JSON.stringify({
                     username,
                     email,
-                    mobile,
                     password
                 }),
             })
