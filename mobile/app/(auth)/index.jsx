@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, Platform, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView,Alert ,ScrollView} from 'react-native'
+import { View, Text, Image, TextInput, Platform, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Alert, ScrollView } from 'react-native'
 import styles from '../../assets/styles/login.style'
 import { useState } from 'react'
 import { useSafeAreaFrame } from 'react-native-safe-area-context'
@@ -12,28 +12,28 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const {user,isLoading,login,isCheckingAuth} = useAuthStore();
+    const { user, isLoading, login, isCheckingAuth } = useAuthStore();
 
 
     const handleLogin = async () => {
-      const result= await login(email,password);
-       if(!result.success) Alert.alert("Error",result.error);
-      
-     };
-if(isCheckingAuth) return null;
+        const result = await login(email, password);
+        if (!result.success) Alert.alert("Error", result.error);
+
+    };
+    if (isCheckingAuth) return null;
     return (
         <KeyboardAvoidingView style={{ flex: 1 }}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
         >
- 
+
             <View style={styles.container}>
                 <View style={styles.topIllustration}>
                     <Image
                         source={require('../../assets/images/i.png')}
-                         style={[
-    styles.illustrationImage,
-    Platform.OS === 'web' && { width: 400, height:300 } // adjust as needed
-  ]}
+                        style={[
+                            styles.illustrationImage,
+                            Platform.OS === 'web' && { width: 400, height: 300 } // adjust as needed
+                        ]}
                         resizeMode="contain"
                     />
                 </View>
@@ -84,7 +84,12 @@ if(isCheckingAuth) return null;
                             )}
                         </TouchableOpacity>
                         {/* Footer */}
-
+                        <View style={styles.footer}>
+                            <TouchableOpacity>
+                                <Text style={{ alignItems: 'center',textDecorationLine: 'underline', fontSize: 14,  color: '#333',}}>Use Mobile Number</Text>
+                            </TouchableOpacity>
+                           
+                        </View>
                         <View style={styles.footer}>
                             <Text style={styles.footerText}>Don't have an account?</Text>
                             <Link href="/signup" asChild>
@@ -96,7 +101,7 @@ if(isCheckingAuth) return null;
                     </View>
                 </View>
             </View>
-           
+
         </KeyboardAvoidingView>
     );
 }

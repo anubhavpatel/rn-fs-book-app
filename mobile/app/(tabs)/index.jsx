@@ -61,7 +61,7 @@ export default function Home() {
       else setLoading(false);
     }
   };
-
+console.log(token)
   useEffect(() => {
     if (token) {
       fetchBooks();

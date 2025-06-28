@@ -14,6 +14,7 @@ export default function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [mobile,setMobile] = useState("");
     
     const{user,isLoading,register,token} = useAuthStore();
 
@@ -22,7 +23,7 @@ export default function Signup() {
     
 const handleSignUp = async () => {
     
-    const result = await register(username,email,password);
+    const result = await register(username,email,mobile,password);
     
 
     if(!result.success) Alert.alert("Error", result.error);
@@ -67,6 +68,21 @@ const handleSignUp = async () => {
                                     placeholderTextColor={COLORS.placeholderText}
                                     keyboardType="email-address"
                                     autoCapitalize="none"
+                                />
+                            </View>
+
+                        </View>
+    <View style={styles.inputGroup}>
+                            <Text style={styles.label}>Mobile</Text>
+                            <View style={styles.inputContainer}>
+                                <Ionicons name="call-outline" size={20} color={COLORS.primary} style={styles.inputIcon} />
+                                <TextInput style={styles.input}
+                                    placeholder="6391857675"
+                                    value={mobile}
+                                    onChangeText={setMobile}
+                                    placeholderTextColor={COLORS.placeholderText}
+                                   keyboardType="phone-pad"
+                                    
                                 />
                             </View>
 
