@@ -22,9 +22,9 @@ export default function Signup() {
     const router = useRouter();
     
 const handleSignUp = async () => {
-    
+     
     const result = await register(username,email,mobile,password);
-    
+    console.log(result)
 
     if(!result.success) Alert.alert("Error", result.error);
     
